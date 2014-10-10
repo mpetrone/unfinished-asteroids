@@ -8,6 +8,7 @@ ENGINE.Bullet = function(args) {
   }, args);
 
   this.radius = 3;
+  this.sprite = this.sprites[this.team];
 
 };
 
@@ -18,6 +19,11 @@ ENGINE.Bullet.prototype = {
   zIndex: 3,
 
   collidable: true,
+
+  sprites: [
+    [20, 53, 6, 6],
+    [40, 53, 6, 6],
+  ],
 
   collision: function(entity) {
 
@@ -50,7 +56,7 @@ ENGINE.Bullet.prototype = {
 
   render: function() {
 
-    app.layer.fillStyle("#fff").fillRect(this.x - 4, this.y - 4, 8, 8);
+    app.layer.drawRegion(app.images.spritesheet, this.sprite, this.x - 4, this.y - 4);
 
   }
 
